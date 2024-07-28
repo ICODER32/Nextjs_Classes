@@ -130,3 +130,95 @@ Next.js is a React framework that provides a powerful solution for server-side r
 ## Conclusion
 
 Next.js is a powerful framework that extends React's capabilities with additional features like SSR, SSG, and API routes. It provides a comprehensive solution for building modern, performant web applications with ease. By understanding the history and evolution of JavaScript, TypeScript, Node.js, and React, you can better appreciate the strengths of Next.js and leverage its features to create outstanding web experiences.
+
+Here are the steps in a README format to guide your students on starting a Next.js app, explaining the files, and displaying "Hello, World!" directly from `layout.tsx`:
+
+---
+
+# Content Covered in Class 01
+
+## Table of Contents
+
+1. [Prerequisites](#prerequisites)
+2. [Creating a Next.js App](#creating-a-nextjs-app)
+3. [Navigating the Project Structure](#navigating-the-project-structure)
+4. [Understanding Key Files](#understanding-key-files)
+5. [Displaying "Hello, World!" from `layout.tsx`](#displaying-hello-world-from-layouttsx)
+
+## Prerequisites
+
+Make sure you have the following installed on your machine:
+
+- [Node.js](https://nodejs.org/) (includes npm)
+- A code editor like [VS Code](https://code.visualstudio.com/)
+
+## Creating a Next.js App
+
+1. **Open your terminal**.
+2. **Run the following command** to create a new Next.js app:
+   ```bash
+   npx create-next-app@latest
+   ```
+3. **Navigate to your project directory**:
+   ```bash
+   cd <project-name> or type ls to see the project name
+   ```
+
+## Navigating the Project Structure
+
+1. **List the files and directories** in your project to check for `package.json`:
+
+   - On macOS/Linux:
+     ```bash
+     ls
+     ```
+   - On Windows:
+     ```bash
+     dir
+     ```
+
+   You should see a list of files and directories including `package.json`.
+
+## Understanding Key Files
+
+- **`package.json`**: Lists the project's dependencies and scripts.
+- **`next.config.js`**: Configuration file for Next.js.
+- **`app/`**: Contains route components.
+  - **`layout.tsx`**: The layout component that wraps around page content.
+  - **`page.tsx`**: The default page component.
+- **`public/`**: Static files like images.
+- **`styles/`**: CSS files for styling.
+
+## Displaying "Hello, World!" from `layout.tsx`
+
+1. **Open `layout.tsx`** in your code editor. This file is typically located at `app/layout.tsx`.
+2. **Modify `layout.tsx`** to display "Hello, World!":
+
+   ```typescript
+   // app/layout.tsx
+
+   const Layout = ({ children }) => {
+     return (
+       <html lang="en">
+         <body>
+           <h1>Hello, World!</h1>
+           {children}
+         </body>
+       </html>
+     );
+   };
+
+   export default Layout;
+   ```
+
+3. **Run the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your web browser** and navigate to `http://localhost:3000`. You should see "Hello, World!" displayed on the page.
+
+## Conclusion
+
+You've now successfully created a Next.js app, navigated its structure, understood key files, and displayed "Hello, World!" from `layout.tsx`. This foundational knowledge will help you build more complex applications using Next.js.
