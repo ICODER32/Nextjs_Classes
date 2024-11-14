@@ -17,16 +17,10 @@ export const newsSchema = defineType({
       of: [{ type: "block" }],
     },
     {
-      name: "author",
-      type: "object",
-      fields: [
-        {
-          title: "Name",
-          name: "name",
-          type: "reference",
-          to: [{ type: "author" }],
-        },
-      ],
+      title: "Author",
+      name: "authorname",
+      type: "reference",
+      to: [{ type: "author" }],
     },
     {
       title: "Publish time",

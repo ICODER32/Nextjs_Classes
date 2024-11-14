@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/card";
 import { urlFor } from "@/sanity/lib/image";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
 type News = {
   _id: string;
@@ -21,18 +20,17 @@ type News = {
   poster: any;
   category: string;
 };
-export default function Home() {
+export default function Business() {
   const [news, setNews] = useState([]);
   const getNews = async () => {
     const news = await client.fetch(
-      `*[_type == "news" && category[0]=='headline' ] {
+      `*[_type == "news" && category[0]=='business' || category[1]=='business' ] {
   title,
     content,
     publishtime,
     authorname->{name,email},
     poster,
-    category,
-    _id
+    category
     
 }`,
       {
@@ -49,23 +47,21 @@ export default function Home() {
   return (
     <div className="flex gap-2 m-8 flex-wrap">
       {news.map((news: News) => (
-        <Link key={news._id} href={`/news/${news._id}`}>
-          <Card className=" max-w-[400px]">
-            <CardHeader>
-              <CardTitle>{news.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <img src={urlFor(news.poster)} alt="" />
-              <CardDescription>
-                {news.content[0].children[0].text}
-              </CardDescription>
-            </CardContent>
-            <CardFooter className=" flex justify-between">
-              <p>{new Date(news.publishtime).toDateString()}</p>
-              <p>{news.authorname.name}</p>
-            </CardFooter>
-          </Card>
-        </Link>
+        <Card className=" max-w-[400px]" key={news.title}>
+          <CardHeader>
+            <CardTitle>{news.title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <img src={urlFor(news.poster)} alt="" />
+            <CardDescription>
+              {news.content[0].children[0].text}
+            </CardDescription>
+          </CardContent>
+          <CardFooter className=" flex justify-between">
+            <p>{new Date(news.publishtime).toDateString()}</p>
+            <p>{news.authorname.name}</p>
+          </CardFooter>
+        </Card>
       ))}
     </div>
   );
